@@ -28,7 +28,7 @@ Database is dockerized, run compose command in INFO/db-docker folder, this will 
 
 `docker compose up`
 
-Alternatively you can run .sql script located in IFNO/db-docker/init folder and configure DB on your local server. 
+Alternatively you can run .sql script located in INFO/db-docker/init folder and configure DB on your local server. 
 Connectivity setting can be adjusted application.properties file (localhost:5438 and admin account used by default).
 
 ## Project status
