@@ -2,7 +2,7 @@
 
 This project is created in terms of interviewing process at Dateio. The REST API service helps user to record the log when client sees the offer. Service uses L1 and L2 caching layers.
 
-Technologies: Java 17, Spring Boot, Hibernate Ehcache, JPA, Maven, Docker
+Technologies: Java 17, Spring Boot, Hibernate Ehcache, PostgreSQL JPA, Maven, Docker
 
 ## Performance:
 
