@@ -7,6 +7,7 @@ import jakarta.validation.ValidationException;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +33,8 @@ public class RecordController {
     @Autowired
     private RecordService recordService; /* Service for data access */
 
-
+    /* Function takes client_id and offer_id as Params input,
+     * creates Record object and stores it in database */
     @PostMapping("/") /* Spring REST annotation */
     public ResponseEntity recordOfferSeen(@Positive @RequestParam Long client_id,
                                           @Positive @RequestParam Long offer_id) { /* Validation of input data */
@@ -40,6 +42,8 @@ public class RecordController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    /* Function takes client_id (page and size optionally) as input
+     * and returns JSON response with records containing client_id */
     @GetMapping("/get/{client_id}")     /* Spring REST annotation */
     public ResponseEntity getSummary(@Positive @PathVariable Long client_id,
                                      @PositiveOrZero @RequestParam(defaultValue = "0") int page,
@@ -62,6 +66,9 @@ public class RecordController {
         }
     }
 
+
+    /* Function takes client_id and offer_id (page and size optionally) as input
+    * and returns JSON response with records containing both IDs */
     @GetMapping("/get/{client_id}/{offer_id}")  /* Spring REST annotation */
     public ResponseEntity<Map> getRecordByOfferId(@Positive @PathVariable Long client_id,
                                                   @Positive @PathVariable Long offer_id,
@@ -97,8 +104,13 @@ public class RecordController {
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity handleConstraintViolationException() {
+    public ResponseEntity handleMethodArgumentTypeMismatchException() {
         return ResponseEntity.badRequest().body("Validation failed: only positive integer values are allowed");
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity handleDataIntegrityViolationException() {
+        return ResponseEntity.badRequest().body("Client of offer not existing");
     }
 }
 
