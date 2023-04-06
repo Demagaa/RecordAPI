@@ -2,9 +2,9 @@
 
 This project is created in terms of interviewing process at Dateio. The REST API service helps user to record the log when client sees the offer. Service uses L1 and L2 caching layers.
 
-Technologies: Java 17, Spring Boot, Hibernate Ehcache, JPA, Maven, Docker
+Technologies: Java 17, Spring Boot, Hibernate Ehcache, PostgreSQL JPA, Maven, Docker
 
-Performance:
+## Performance:
 
 GET + POST reuests (10 threads, 2x100 requests):
 <img width="1966" alt="GET + POST Summary Report (10 threads 2x100 requests)" src="https://user-images.githubusercontent.com/90135638/230092616-e678893a-ba00-4e85-ae07-9dc308eb8f88.png">
@@ -17,7 +17,7 @@ GET request (10 threads, 100 requests):
 ![GET Summary Report (10 threads 2x100 requests)](https://user-images.githubusercontent.com/90135638/230092388-7305a8d7-6790-46ce-9677-59da010ad671.png)
 
 
-Launch:
+## Launch:
 
 Interaction with the service is implemented via API calls. 
 Postman API collection can be found in INFO directory (Record REST API.postman_collection) file. 
@@ -28,7 +28,8 @@ Database is dockerized, run compose command in INFO/db-docker folder, this will 
 
 `docker compose up`
 
-Alternatively you can run .sql script located in IFNO/db-docker/init folder and configure DB on your local server. 
+Alternatively you can run .sql script located in INFO/db-docker/init folder and configure DB on your local server. 
 Connectivity setting can be adjusted application.properties file (localhost:5438 and admin account used by default).
 
-Project status: improving stage
+## Project status
+Improving stage
