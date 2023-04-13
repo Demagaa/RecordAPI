@@ -61,4 +61,10 @@ public class RecordControllerIntegrationTest {
         mvc.perform(get("/offers/get/2").param("size", "1"))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void testGetRecordByOfferId() throws Exception{
+        mvc.perform(get("/get/1/1").param("size", "1"))
+                .andExpect(status().isOk());
+    }
 }

@@ -17,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,6 +113,8 @@ public class RecordController {
     public ResponseEntity handleDataIntegrityViolationException() {
         return ResponseEntity.badRequest().body("Client of offer not existing");
     }
+
+
 }
 
 
