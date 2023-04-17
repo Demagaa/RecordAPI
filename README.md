@@ -1,6 +1,6 @@
 # RecordAPI
 
-This project is created in terms of interviewing process at Dateio. The REST API service helps user to record the log when client sees the offer. Service uses L1 and L2 caching layers.
+This project is created to demostrate my ability to work with Spring Boot and JPA. The REST API service helps user to record the log when client sees the offer. Service uses L1 and L2 caching layers. There is an [extention](https://github.com/Demagaa/AvalilabilityCheckerForRecordAPI) available to make offers be up to date.
 
 Technologies: Java 17, Spring Boot, Hibernate Ehcache, PostgreSQL JPA, Maven, Docker
 
